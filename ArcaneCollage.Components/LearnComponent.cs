@@ -10,8 +10,7 @@ namespace ArcaneCollage.Components
     {
         public SkillType skillType { get; set; }
 
-        public double value => baseValue * (1 + details.Sum(x => x.value));
-        public double baseValue => 1;
+        public double value => details.Sum(x => x.value);
         public IEnumerable<(string desc, double value)> details => _details;
 
 

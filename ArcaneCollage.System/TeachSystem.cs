@@ -10,22 +10,25 @@ namespace ArcaneCollage.System
 {
     public class TeachSystem
     {
-        void OnTimeLapse(ITeachLearnSpace space)
+        public void OnTimeLapse(IEnumerable<ITeachLearnSpace> spaces)
         {
-            var tech = GenerateTeach(space.teacher, space.skillType);
-            space.teacher.AddComponent(tech);
-
-            foreach (var student in space.students)
+            foreach(var space in spaces)
             {
-                var lean = GenerateLearn(student, space.skillType);
+                var teach = GenerateTeach(space.teacher, space.skillType);
+                space.teacher.AddComponent(teach);
 
-                lean.skillType = tech.skillType;
-                lean.AddDetail("Teach", tech.value);
+                foreach (var student in space.students)
+                {
+                    var lean = GenerateLearn(student, space.skillType);
 
-                student.AddComponent(lean);
+                    lean.skillType = teach.skillType;
+                    lean.AddDetail("Teach", teach.value);
+
+                    student.AddComponent(lean);
+                }
+
+                space.teacher.RemoveComponent(teach);
             }
-
-            space.teacher.RemoveComponent(tech);
         }
 
         private LearnComponent GenerateLearn(IEntity student, SkillType skillType)
@@ -45,6 +48,7 @@ namespace ArcaneCollage.System
         private TeachComponent GenerateTeach(IEntity teacher, SkillType skillType)
         {
             var teach = new TeachComponent();
+            teach.skillType = skillType;
 
             var effects = teacher.components.OfType<ITeachEffect>();
             foreach (var effect in effects)

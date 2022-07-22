@@ -1,4 +1,5 @@
 ﻿using ArcaneCollage.Skills.Interfaces;
+using System.Collections.Generic;
 
 namespace ArcaneCollage.Components.Interfaces
 {
@@ -7,7 +8,6 @@ namespace ArcaneCollage.Components.Interfaces
         SkillType skillType { get; }
         double value { get; }
 
-
-        void AddDetail(string name, double value);
+        IEnumerable<(string desc, double value)> details { get; }
     }
 }

@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ArcaneCollage.Components.Interfaces\ArcaneCollage.Components.Interfaces.csproj" />
+    <ProjectReference Include="..\ArcaneCollage.Components\ArcaneCollage.Components.csproj" />
+    <ProjectReference Include="..\ArcaneCollage.Effects.Interfaces\ArcaneCollage.Effects.Interfaces.csproj" />
+    <ProjectReference Include="..\ArcaneCollage.Entities.Interfaces\ArcaneCollage.Entities.Interfaces.csproj" />
+    <ProjectReference Include="..\ArcaneCollage.Skills.Interfaces\ArcaneCollage.Skills.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -4,6 +4,12 @@
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <Optimize>false</Optimize>
+    <OutputPath>..\ArcaneCollage.Unity\Assets\Depends\</OutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\ArcaneCollage.Components.Interfaces\ArcaneCollage.Components.Interfaces.csproj" />
     <ProjectReference Include="..\ArcaneCollage.Components\ArcaneCollage.Components.csproj" />

@@ -11,11 +11,4 @@ namespace ArcaneCollage.Entities.Interfaces
         void AddComponent(IComponent component);
         void RemoveComponent(IComponent component);
     }
-
-    public interface ITeachLearnSpace : IEntity
-    {
-        SkillType skillType { get; }
-        IEntity teacher { get; }
-        IEnumerable<IEntity> students { get; }
-    }
 }

@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{9841BE06-FEBA-5D13-8E3C-4B634FA44154}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "Assembly-CSharp-firstpass.csproj", "{C16B89B0-695F-D7C6-40A7-7F22E3851360}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArcaneCollage.System", "..\ArcaneCollage.System\ArcaneCollage.System.csproj", "{4426BED6-E1B7-4531-9439-70358798EBC0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArcaneCollage.Components.Interfaces", "..\ArcaneCollage.Components.Interfaces\ArcaneCollage.Components.Interfaces.csproj", "{44D96F25-7CB3-431B-98E5-9A325C1C66F2}"
@@ -33,6 +35,10 @@ Global
 		{9841BE06-FEBA-5D13-8E3C-4B634FA44154}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9841BE06-FEBA-5D13-8E3C-4B634FA44154}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9841BE06-FEBA-5D13-8E3C-4B634FA44154}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C16B89B0-695F-D7C6-40A7-7F22E3851360}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C16B89B0-695F-D7C6-40A7-7F22E3851360}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C16B89B0-695F-D7C6-40A7-7F22E3851360}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C16B89B0-695F-D7C6-40A7-7F22E3851360}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4426BED6-E1B7-4531-9439-70358798EBC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4426BED6-E1B7-4531-9439-70358798EBC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4426BED6-E1B7-4531-9439-70358798EBC0}.Release|Any CPU.ActiveCfg = Release|Any CPU

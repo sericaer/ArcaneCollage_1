@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ArcaneCollage.Components\ArcaneCollage.Components.csproj" />
     <ProjectReference Include="..\ArcaneCollage.Entities\ArcaneCollage.Entities.csproj" />
     <ProjectReference Include="..\ArcaneCollage.Sessions.Interfaces\ArcaneCollage.Sessions.Interfaces.csproj" />
   </ItemGroup>

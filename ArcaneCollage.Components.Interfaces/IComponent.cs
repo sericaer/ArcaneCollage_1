@@ -4,5 +4,6 @@ namespace ArcaneCollage.Components.Interfaces
 {
     public interface IComponent
     {
+        
     }
 }

@@ -1,0 +1,80 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{9841BE06-FEBA-5D13-8E3C-4B634FA44154}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArcaneCollage.System", "..\ArcaneCollage.System\ArcaneCollage.System.csproj", "{4426BED6-E1B7-4531-9439-70358798EBC0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArcaneCollage.Components.Interfaces", "..\ArcaneCollage.Components.Interfaces\ArcaneCollage.Components.Interfaces.csproj", "{44D96F25-7CB3-431B-98E5-9A325C1C66F2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArcaneCollage.Skills.Interfaces", "..\ArcaneCollage.Skills.Interfaces\ArcaneCollage.Skills.Interfaces.csproj", "{5160B6AC-6F05-408E-8312-A244562EDEB6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArcaneCollage.Components", "..\ArcaneCollage.Components\ArcaneCollage.Components.csproj", "{2A8EBA40-3948-4E78-92A6-9DD470976686}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArcaneCollage.Entities.Interfaces", "..\ArcaneCollage.Entities.Interfaces\ArcaneCollage.Entities.Interfaces.csproj", "{694D5F58-A1CB-4572-9721-E10AA29B96B6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArcaneCollage.Effects.Interfaces", "..\ArcaneCollage.Effects.Interfaces\ArcaneCollage.Effects.Interfaces.csproj", "{5323AE3B-6B29-4F89-928D-E12C4F0786DB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTest", "..\XUnitTest\XUnitTest.csproj", "{472D9E58-A386-4FBD-A388-AAB426B513A3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArcaneCollage.Sessions", "..\ArcaneCollage.Sessions\ArcaneCollage.Sessions.csproj", "{68A45F72-F2E9-464B-A01B-B14F3FE202B2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArcaneCollage.Sessions.Interfaces", "..\ArcaneCollage.Sessions.Interfaces\ArcaneCollage.Sessions.Interfaces.csproj", "{D41DEDF7-CFA1-42C9-81F4-EE888902A60A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArcaneCollage.Entities", "..\ArcaneCollage.Entities\ArcaneCollage.Entities.csproj", "{13CBA0BE-A861-4776-A943-67143FDB211F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9841BE06-FEBA-5D13-8E3C-4B634FA44154}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9841BE06-FEBA-5D13-8E3C-4B634FA44154}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9841BE06-FEBA-5D13-8E3C-4B634FA44154}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9841BE06-FEBA-5D13-8E3C-4B634FA44154}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4426BED6-E1B7-4531-9439-70358798EBC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4426BED6-E1B7-4531-9439-70358798EBC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4426BED6-E1B7-4531-9439-70358798EBC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4426BED6-E1B7-4531-9439-70358798EBC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44D96F25-7CB3-431B-98E5-9A325C1C66F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44D96F25-7CB3-431B-98E5-9A325C1C66F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44D96F25-7CB3-431B-98E5-9A325C1C66F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44D96F25-7CB3-431B-98E5-9A325C1C66F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5160B6AC-6F05-408E-8312-A244562EDEB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5160B6AC-6F05-408E-8312-A244562EDEB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5160B6AC-6F05-408E-8312-A244562EDEB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5160B6AC-6F05-408E-8312-A244562EDEB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A8EBA40-3948-4E78-92A6-9DD470976686}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A8EBA40-3948-4E78-92A6-9DD470976686}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A8EBA40-3948-4E78-92A6-9DD470976686}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A8EBA40-3948-4E78-92A6-9DD470976686}.Release|Any CPU.Build.0 = Release|Any CPU
+		{694D5F58-A1CB-4572-9721-E10AA29B96B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{694D5F58-A1CB-4572-9721-E10AA29B96B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{694D5F58-A1CB-4572-9721-E10AA29B96B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{694D5F58-A1CB-4572-9721-E10AA29B96B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5323AE3B-6B29-4F89-928D-E12C4F0786DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5323AE3B-6B29-4F89-928D-E12C4F0786DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5323AE3B-6B29-4F89-928D-E12C4F0786DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5323AE3B-6B29-4F89-928D-E12C4F0786DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{472D9E58-A386-4FBD-A388-AAB426B513A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{472D9E58-A386-4FBD-A388-AAB426B513A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{472D9E58-A386-4FBD-A388-AAB426B513A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{472D9E58-A386-4FBD-A388-AAB426B513A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68A45F72-F2E9-464B-A01B-B14F3FE202B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68A45F72-F2E9-464B-A01B-B14F3FE202B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68A45F72-F2E9-464B-A01B-B14F3FE202B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68A45F72-F2E9-464B-A01B-B14F3FE202B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D41DEDF7-CFA1-42C9-81F4-EE888902A60A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D41DEDF7-CFA1-42C9-81F4-EE888902A60A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D41DEDF7-CFA1-42C9-81F4-EE888902A60A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D41DEDF7-CFA1-42C9-81F4-EE888902A60A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13CBA0BE-A861-4776-A943-67143FDB211F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13CBA0BE-A861-4776-A943-67143FDB211F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13CBA0BE-A861-4776-A943-67143FDB211F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13CBA0BE-A861-4776-A943-67143FDB211F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

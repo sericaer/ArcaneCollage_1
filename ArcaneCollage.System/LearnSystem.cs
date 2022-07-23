@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace ArcaneCollage.System
 {
-    public class LeanSystem
+    public class LearnSystem
     {
         void OnTimeLapse(IEnumerable<IEntity> entities)
         {

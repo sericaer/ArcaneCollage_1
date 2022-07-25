@@ -5,6 +5,11 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\ArcaneCollage.Entities.Interfaces\ArcaneCollage.Entities.Interfaces.csproj" />
     <ProjectReference Include="..\ArcaneCollage.Entities\ArcaneCollage.Entities.csproj" />

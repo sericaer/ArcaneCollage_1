@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 
-namespace Labs
+namespace Labs.Word0
 {
-    interface IBuliding
+    interface IBuilding
     {
         string name { get; }
         IBulidingUsage usage { get; }
@@ -30,7 +30,7 @@ namespace Labs
         ISchedule schedule { get; }
         IList<IPlan> plans { get; }
 
-        IGroup group { get; set; }
+        IGroup group { get; }
     }
 
     interface ISchedule
@@ -64,12 +64,15 @@ namespace Labs
 
         void AddPerson(IPerson person);
         void Do();
+        void RemovePerson(Person person);
     }
 
     interface ITeachLearnGroup : IGroup
     {
         IPerson teacher { get; }
         IEnumerable<IPerson> students { get; }
+
+        IBuilding building { get; set; }
     }
 
     interface IPlan
@@ -89,25 +92,36 @@ namespace Labs
 
     class TeachLearnGroup : ITeachLearnGroup
     {
-        public IPerson teacher => _person.Where(x => x.role is ITeacher).SingleOrDefault();
+        public IPerson teacher => _persons.Where(x => x.role is ITeacher).SingleOrDefault();
 
-        public IEnumerable<IPerson> students => _person.Where(x => x.role is IStudent);
+        public IEnumerable<IPerson> students => _persons.Where(x => x.role is IStudent);
 
-        public IEnumerable<IPerson> persons => _person;
+        public IEnumerable<IPerson> persons => _persons;
 
         public bool isFull =>  false;
 
-        private IList<IPerson> _person = new List<IPerson>();
+        public IBuilding building { get ; set ; }
+
+        private IList<IPerson> _persons = new List<IPerson>();
 
         public void AddPerson(IPerson person)
         {
-            _person.Add(person);
-            person.group = this;
+            _persons.Add(person);
         }
 
         public void Do()
         {
             throw new NotImplementedException();
+        }
+
+        public void RemovePerson(Person person)
+        {
+            if(!_persons.Contains(person))
+            {
+                return;
+            }
+
+            _persons.Remove(person);
         }
     }
 
@@ -122,8 +136,8 @@ namespace Labs
         public ISchedule schedule { get; }
 
         public IList<IPlan> plans { get; } = new List<IPlan>();
-        public IGroup group { get ; set ; }
 
+        public IGroup group => throw new NotImplementedException();
 
         public Person(string name, IRole role)
         {
@@ -163,7 +177,9 @@ namespace Labs
 
     class DoPlanTeachSystem
     {
-        public void OnTimeLapse(IEnumerable<IPerson> persons, IEnumerable<IBuliding> bulidings, ITime time)
+        public static Func<ITeachLearnGroup> GenerateGroup;
+
+        public void OnTimeLapse(IEnumerable<IPerson> persons, IEnumerable<IBuilding> buildings, ITime time)
         {
             foreach (var person in persons)
             {
@@ -173,26 +189,27 @@ namespace Labs
                     continue;
                 }
 
-                var buliding = bulidings.Where(x => x.userGroup == null && x.usage is IClassRoomUsage).FirstOrDefault();
-                if (buliding == null)
+                var building = buildings.Where(x => x.userGroup == null && x.usage is IClassRoomUsage).FirstOrDefault();
+                if (building == null)
                 {
                     return;
                 }
 
-                var group = new TeachLearnGroup();
+                var group = GenerateGroup();
                 group.AddPerson(person);
-
-                buliding.userGroup = group;
+                group.building = building;
 
                 person.plans.Remove(plan);
 
-                Console.WriteLine($"{person.name}[{person.role.GetType().Name}] finish plan {plan.GetType().Name} : Occpy {buliding.name} to StartTeach");
+                Console.WriteLine($"{person.name}[{person.role.GetType().Name}] finish plan {plan.GetType().Name} : Occpy {building.name} to StartTeach");
             }
         }
     }
 
     class DoPlanLearnSystem
     {
+        public static Func<ITeachLearnGroup> FindJoininGroup;
+
         public void OnTimeLapse(IEnumerable<IPerson> persons, IEnumerable<IGroup> groups, ITime time)
         {
             foreach (var person in persons)
@@ -203,13 +220,14 @@ namespace Labs
                     continue;
                 }
 
-                var group = groups.OfType<ITeachLearnGroup>().FirstOrDefault(x => !x.isFull);
-                if (groups == null)
+                var group = FindJoininGroup();
+                if (group == null)
                 {
                     return;
                 }
 
                 group.AddPerson(person);
+
                 person.plans.Remove(plan);
 
                 Console.WriteLine($"{person.name}[{person.role.GetType().Name}] finish plan {plan.GetType().Name} : Join in group {group.teacher.name} to StartLean");
@@ -251,67 +269,89 @@ namespace Labs
 
     internal class Teacher : ITeacher
     {
-        public Teacher()
-        {
-        }
     }
 
-    class Program
+    //class Program
+    //{
+    //    static void Main(string[] args)
+    //    {
+    //        var schedules = new Dictionary<IRole, ISchedule>();
+
+    //        Person.GetRoleSchedule = (role) =>
+    //        {
+    //            return schedules[role];
+    //        };
+
+    //        var teacherRole = new Teacher();
+    //        var studentRole = new Student();
+    //        schedules.Add(teacherRole, new Schedule()
+    //        {
+    //            daily = new (int hour, IPlan plan)[] { (6, new PlanDining()), (7, new PlanTeach()) , (13, new PlanSleep()) }
+    //        });
+
+    //        schedules.Add(studentRole, new Schedule()
+    //        {
+    //            daily = new (int hour, IPlan plan)[] { (7, new PlanDining()), (8, new PlanLearn()), (12, new PlanSleep()) }
+    //        });
+
+    //        var persons = new IPerson[]
+    //        {
+    //            new Person("P0", teacherRole),
+    //            new Person("P1", studentRole),
+    //        };
+
+    //        var classroom = new ClassroomUsage();
+    //        var buildings = new IBuilding[]
+    //        {
+    //            new Building("B0", classroom),
+    //            new Building("B1", classroom),
+    //            new Building("B2", classroom),
+    //        };
+
+    //        var groups = new List<IGroup>();
+
+    //        var time = new Time(1, 1, 1, 7);
+
+    //        DoPlanTeachSystem.GenerateGroup = () =>
+    //        {
+    //            var group = new TeachLearnGroup();
+    //            groups.Add(group);
+
+    //            return group;
+    //        };
+
+    //        DoPlanLearnSystem.FindJoininGroup = () =>
+    //        {
+    //            return groups.OfType<ITeachLearnGroup>().Where(x=>!x.isFull).FirstOrDefault();
+    //        };
+
+    //        var scheduleSytem = new ScheduleSystem();
+    //        var doPlanTeachSystem = new DoPlanTeachSystem();
+    //        var doPlanLearnSystem = new DoPlanLearnSystem();
+    //        var doTeachLearnSystem = new DoTeachLearnSystem();
+
+    //        for (int i=0; i<100; i++)
+    //        {
+    //            Console.WriteLine($"{time.year}-{time.month}-{time.day} {time.hour}");
+
+    //            scheduleSytem.OnTimeLapse(persons, time);
+    //            doPlanTeachSystem.OnTimeLapse(persons, buildings, time);
+    //            doPlanLearnSystem.OnTimeLapse(persons, buildings.Select(x => x.userGroup), time);
+    //            doTeachLearnSystem.OnTimeLapse(groups, time);
+
+    //            time.Lapse();
+
+
+    //            Thread.Sleep(1000);
+    //        }
+    //    }
+    //}
+
+    internal class DoTeachLearnSystem
     {
-        static void Main(string[] args)
+        internal void OnTimeLapse(List<IGroup> teachLearnGroups, ITime time)
         {
-            var schedules = new Dictionary<IRole, ISchedule>();
 
-            Person.GetRoleSchedule = (role) =>
-            {
-                return schedules[role];
-            };
-
-            var teacherRole = new Teacher();
-            var studentRole = new Student();
-            schedules.Add(teacherRole, new Schedule()
-            {
-                daily = new (int hour, IPlan plan)[] { (6, new PlanDining()), (7, new PlanTeach()) , (13, new PlanSleep()) }
-            });
-
-            schedules.Add(studentRole, new Schedule()
-            {
-                daily = new (int hour, IPlan plan)[] { (7, new PlanDining()), (8, new PlanLearn()), (12, new PlanSleep()) }
-            });
-
-            var persons = new IPerson[]
-            {
-                new Person("P0", teacherRole),
-                new Person("P1", studentRole),
-            };
-
-            var classroom = new ClassroomUsage();
-            var buildings = new IBuliding[]
-            {
-                new Building("B0", classroom),
-                new Building("B1", classroom),
-                new Building("B2", classroom),
-            };
-
-            var time = new Time(1, 1, 1, 7);
-
-            var scheduleSytem = new ScheduleSystem();
-            var doPlanTeachSystem = new DoPlanTeachSystem();
-            var doPlanLearnSystem = new DoPlanLearnSystem();
-
-            for (int i=0; i<100; i++)
-            {
-                Console.WriteLine($"{time.year}-{time.month}-{time.day} {time.hour}");
-
-                scheduleSytem.OnTimeLapse(persons, time);
-                doPlanTeachSystem.OnTimeLapse(persons, buildings, time);
-                doPlanLearnSystem.OnTimeLapse(persons, buildings.Select(x => x.userGroup), time);
-
-                time.Lapse();
-
-
-                Thread.Sleep(1000);
-            }
         }
     }
 
@@ -320,7 +360,7 @@ namespace Labs
 
     }
 
-    internal class Building : IBuliding
+    internal class Building : IBuilding
     {
         public Building(string name, IBulidingUsage usage)
         {
